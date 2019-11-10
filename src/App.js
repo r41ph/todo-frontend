@@ -2,13 +2,14 @@ import React from "react";
 import "./App.scss";
 import TodoForm from "./components/todoForm/TodoForm";
 import { Switch, Route } from "react-router-dom";
+import TodoList from "./components/todoList/TodoList";
 
 function App() {
   return (
     <div className="todo-container">
       <Switch>
         <Route path="/" exact>
-          <h1>HOME</h1>
+          <TodoList />
         </Route>
         <Route path="/add">
           <TodoForm />
