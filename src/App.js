@@ -6,7 +6,7 @@ import TodoList from "./components/todoList/TodoList";
 
 function App() {
   return (
-    <div className="todo-container">
+    <div className="todos-container">
       <Switch>
         <Route path="/" exact>
           <TodoList />
