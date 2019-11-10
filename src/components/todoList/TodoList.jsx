@@ -1,8 +1,9 @@
 import React from "react";
 import axios from "axios";
 import "./TodoList.scss";
+import Todo from "../todo/Todo";
 
-function TodoList() {
+const TodoList = () => {
   const [todos, setTodos] = React.useState([]);
   React.useEffect(() => {
     axios
@@ -14,10 +15,16 @@ function TodoList() {
   return (
     <div className="todo-container">
       {todos.length > 0
-        ? todos.map(todo => <div key="{todo._id}">{todo.todo_title}</div>)
+        ? todos.map(todo => (
+            <Todo
+              key={todo._id}
+              title={todo.todo_title}
+              description={todo.todo_description}
+            />
+          ))
         : "Loading"}
     </div>
   );
-}
+};
 
 export default TodoList;
