@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import "./TodoList.scss";
+import moment from "moment";
 import Todo from "../todo/Todo";
 
 const TodoList = () => {
@@ -20,6 +21,13 @@ const TodoList = () => {
               key={todo._id}
               title={todo.todo_title}
               description={todo.todo_description}
+              duedate={
+                todo.todo_duedate !== ""
+                  ? moment(todo.todo_duedate).format(
+                      "dddd, Do MMMM YYYY, h:mm:ss a"
+                    )
+                  : ""
+              }
             />
           ))
         : "Loading"}
