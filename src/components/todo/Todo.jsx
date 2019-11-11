@@ -25,6 +25,7 @@ const Todo = ({
   completed,
   updateStatus
 }) => {
+  const [isDescVisible, setIsDescVisible] = React.useState(false);
   const onDelete = () => {
     axios
       .post(`http://localhost:3001/api/todos/delete/${id}`)
@@ -49,9 +50,13 @@ const Todo = ({
       });
   };
 
+  const onToggleDescription = () => {
+    setIsDescVisible(!isDescVisible);
+  };
+
   return (
     <div className="todo-container">
-      <div className="todo-toggle">
+      <div className="todo-toggle" onClick={onToggleDescription}>
         <div className="todo-title">{title}</div>
         <div className="todo-options">
           {!completed ? (
@@ -70,7 +75,14 @@ const Todo = ({
           {duedate ? `Due Date: ${duedate}` : ""}
         </div>
       </div>
-      <div className="todo-description">Description: {description}</div>
+      <div
+        className={`todo-description ${
+          isDescVisible ? "todo-description__open" : ""
+        }`}
+      >
+        <div>Description:</div>
+        <div>{description}</div>
+      </div>
     </div>
   );
 };
