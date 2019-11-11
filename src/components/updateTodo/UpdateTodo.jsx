@@ -3,6 +3,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import "./UpdateTodo.scss";
 import TodoForm from "../todoForm/TodoForm";
+import Message from "../message/Message";
 
 const propTypes = {
   todos: PropTypes.any.isRequired,
@@ -11,6 +12,7 @@ const propTypes = {
 
 const UpdateTodo = props => {
   const { updateTodos, todos } = props;
+  const [message, setMessage] = React.useState("");
   const handleSubmit = (title, description, datetime, id) => {
     if (title === "") {
       return;
@@ -30,10 +32,19 @@ const UpdateTodo = props => {
           return todo._id === id ? res.data : todo;
         });
         updateTodos(updatedTodos);
+        setMessage("Todo updated!");
+        setTimeout(() => {
+          setMessage("");
+        }, 2000);
       });
   };
 
-  return <TodoForm onHandleSubmit={handleSubmit} {...props} />;
+  return (
+    <>
+      <TodoForm onHandleSubmit={handleSubmit} {...props} />
+      {message ? <Message message={message} /> : ""}
+    </>
+  );
 };
 
 UpdateTodo.propTypes = propTypes;

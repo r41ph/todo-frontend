@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import "./AddTodo.scss";
 import TodoForm from "../todoForm/TodoForm";
+import Message from "../message/Message";
 
 const propTypes = {
   todos: PropTypes.array,
@@ -10,8 +11,13 @@ const propTypes = {
 };
 
 const AddTodo = ({ todos, updateTodos }) => {
+  const [message, setMessage] = React.useState("");
   const handleSubmit = (title, description, datetime) => {
     if (title === "") {
+      setMessage("Title is mandatory");
+      setTimeout(() => {
+        setMessage("");
+      }, 2000);
       return;
     }
 
@@ -22,12 +28,29 @@ const AddTodo = ({ todos, updateTodos }) => {
       todo_completed: false
     };
 
-    axios.post("http://localhost:3001/api/todos/add", todoDetails).then(res => {
-      updateTodos([...todos, res.data]);
-    });
+    axios
+      .post("http://localhost:3001/api/todos/add", todoDetails)
+      .then(res => {
+        updateTodos([...todos, res.data]);
+        setMessage("Todo added");
+        setTimeout(() => {
+          setMessage("");
+        }, 2000);
+      })
+      .catch(error => {
+        setMessage(error.response);
+        setTimeout(() => {
+          setMessage("");
+        }, 2000);
+      });
   };
 
-  return <TodoForm onHandleSubmit={handleSubmit} />;
+  return (
+    <>
+      <TodoForm onHandleSubmit={handleSubmit} />
+      {message ? <Message message={message} /> : ""}
+    </>
+  );
 };
 
 AddTodo.propTypes = propTypes;

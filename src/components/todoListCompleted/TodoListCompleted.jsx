@@ -2,6 +2,7 @@ import React from "react";
 import "./TodoListCompleted.scss";
 import moment from "moment";
 import Todo from "../todo/Todo";
+import Message from "../message/Message";
 
 const TodoListCompleted = ({ todos = [], updateTodos }) => {
   const onDeleteTodo = id => {
@@ -38,7 +39,11 @@ const TodoListCompleted = ({ todos = [], updateTodos }) => {
       return acc;
     }, []);
 
-    return completed.length > 0 ? completed : "No completed TODOs";
+    return completed.length > 0 ? (
+      completed
+    ) : (
+      <Message message="No completed TODOs" />
+    );
   };
 
   return (
