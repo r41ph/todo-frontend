@@ -57,8 +57,10 @@ const Todo = ({
     setIsDescVisible(!isDescVisible);
   };
 
+  const overdue = moment().unix() > moment(duedate).unix();
+
   return (
-    <div className="todo-container">
+    <div className={`todo-container ${overdue ? "overdue" : ""}`}>
       <div className="todo-toggle" onClick={e => onToggleDescription(e)}>
         <div className="todo-title">{title}</div>
         <div className="todo-options">
