@@ -1,13 +1,47 @@
-.todo-description {
-  display: none;
+.todo-container {
+  background-color: #2398ff;
+  border-radius: 5px;
+  border-top-right-radius: 25px;
+  margin-bottom: 25px;
+  padding: 15px;
+  position: relative;
 
-  &__open {
-    display: block;
+  .todo-title {
+    color: #fff;
   }
-}
+  .todo-description {
+    display: none;
 
-.todo-toggle {
-  &:hover {
-    cursor: pointer;
+    &__open {
+      display: block;
+    }
+  }
+
+  .todo-options {
+    text-align: right;
+  }
+
+  .todo-duedate {
+    font-size: 12px;
+    margin-right: 6px;
+    &__close {
+      background-color: tomato;
+    }
+  }
+
+  .todo-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &.overdue {
+    background-color: tomato;
+    .todo-duedate {
+      color: #fff;
+    }
   }
 }
