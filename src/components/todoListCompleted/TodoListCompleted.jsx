@@ -15,30 +15,35 @@ const TodoListCompleted = ({ todos = [], updateTodos }) => {
     updateTodos(updatedTodos);
   };
 
+  const renderCompleted = () => {
+    const completed = todos.reduce((acc, todo) => {
+      if (todo.todo_completed === true) {
+        acc.push(
+          <Todo
+            key={todo._id}
+            id={todo._id}
+            title={todo.todo_title}
+            description={todo.todo_description}
+            duedate={
+              todo.todo_duedate !== ""
+                ? moment(todo.todo_duedate).format("M/D/Y h:mm A")
+                : ""
+            }
+            completed={todo.todo_completed}
+            deleteTodo={onDeleteTodo}
+            updateStatus={onUpdateTodoStatus}
+          />
+        );
+      }
+      return acc;
+    }, []);
+
+    return completed.length > 0 ? completed : "No completed TODOs";
+  };
+
   return (
     <div className="todos-container">
-      {todos.length > 0
-        ? todos.map(todo =>
-            todo.todo_completed === true ? (
-              <Todo
-                key={todo._id}
-                id={todo._id}
-                title={todo.todo_title}
-                description={todo.todo_description}
-                duedate={
-                  todo.todo_duedate !== ""
-                    ? moment(todo.todo_duedate).format("M/D/Y h:mm A")
-                    : ""
-                }
-                completed={todo.todo_completed}
-                deleteTodo={onDeleteTodo}
-                updateStatus={onUpdateTodoStatus}
-              />
-            ) : (
-              ""
-            )
-          )
-        : "Loading"}
+      {todos.length > 0 ? renderCompleted() : "Loading"}
     </div>
   );
 };
