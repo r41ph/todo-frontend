@@ -17,12 +17,16 @@ function App() {
       .catch(err => console.log("err", err));
   }, []);
 
+  const updateTodoList = updatedList => {
+    setTodos(updatedList);
+  };
+
   return (
     <div className="todos-container">
       <Header heading="todo list app" />
       <Switch>
         <Route path="/" exact>
-          <TodoList todos={todos} />
+          <TodoList todos={todos} updateTodos={updateTodoList} />
         </Route>
         <Route path="/add">
           <AddTodo />
@@ -30,7 +34,7 @@ function App() {
         <Route
           path="/update/:id"
           render={props => (
-            <UpdateTodo {...props} todos={todos} updateTodos={setTodos} />
+            <UpdateTodo {...props} todos={todos} updateTodos={updateTodoList} />
           )}
         ></Route>
       </Switch>
