@@ -1,7 +1,13 @@
 import React from "react";
 import axios from "axios";
+import PropTypes from "prop-types";
 import "./UpdateTodo.scss";
 import TodoForm from "../todoForm/TodoForm";
+
+const propTypes = {
+  todos: PropTypes.any.isRequired,
+  updateTodos: PropTypes.func.isRequired
+};
 
 const UpdateTodo = props => {
   const { updateTodos, todos } = props;
@@ -29,5 +35,7 @@ const UpdateTodo = props => {
 
   return <TodoForm onHandleSubmit={handleSubmit} {...props} />;
 };
+
+UpdateTodo.propTypes = propTypes;
 
 export default UpdateTodo;
