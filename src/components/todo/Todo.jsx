@@ -51,7 +51,7 @@ const Todo = ({
   };
 
   const onToggleDescription = event => {
-    if (event.target.className !== "todo-options") {
+    if (event.target.className !== "todo-toggle") {
       return;
     }
     setIsDescVisible(!isDescVisible);
@@ -73,9 +73,7 @@ const Todo = ({
           <Button handleClick={onCompleted}>
             {!completed ? "Complete" : "Open"}
           </Button>
-        </div>
-        <div className="todo-duedate">
-          {duedate ? `Due Date: ${duedate}` : ""}
+          <div className="todo-duedate">{duedate ? duedate : ""}</div>
         </div>
       </div>
       <div
@@ -83,8 +81,7 @@ const Todo = ({
           isDescVisible ? "todo-description__open" : ""
         }`}
       >
-        <div>Description:</div>
-        <div>{description}</div>
+        {description}
       </div>
     </div>
   );
