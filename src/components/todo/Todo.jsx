@@ -58,6 +58,7 @@ const Todo = ({
   };
 
   const overdue = moment().unix() > moment(duedate).unix();
+  const closeToEndTime = moment().isAfter(moment(duedate).subtract(1, "hours"));
 
   return (
     <div className={`todo-container ${overdue ? "overdue" : ""}`}>
@@ -75,7 +76,9 @@ const Todo = ({
           <Button handleClick={onCompleted}>
             {!completed ? "Complete" : "Open"}
           </Button>
-          <div className="todo-duedate">{duedate ? duedate : ""}</div>
+          <div className={`todo-duedate ${closeToEndTime ? "overdue" : ""}`}>
+            {duedate ? duedate : ""}
+          </div>
         </div>
       </div>
       <div
