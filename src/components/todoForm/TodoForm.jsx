@@ -22,7 +22,7 @@ const TodoForm = props => {
       const todo = todos.find(todo => todo._id === todoId);
       setTitle(todo.todo_title);
       setDescription(todo.todo_description);
-      setDatetime(moment(todo.todo_duedate).format("D/M/Y h:mm A"));
+      setDatetime(moment(todo.todo_duedate).format("M/D/Y h:mm A"));
     }
   }, [todoId, todos, props.match]);
 
