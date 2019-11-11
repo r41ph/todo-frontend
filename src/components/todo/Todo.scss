@@ -24,8 +24,9 @@
   .todo-duedate {
     font-size: 12px;
     margin-right: 6px;
-    &__close {
-      background-color: tomato;
+    &.overdue {
+      color: #ff6347;
+      font-weight: bold;
     }
   }
 
@@ -39,7 +40,7 @@
   }
 
   &.overdue {
-    background-color: tomato;
+    background-color: lighten(#ff6347, 15%);
     .todo-duedate {
       color: #fff;
     }
