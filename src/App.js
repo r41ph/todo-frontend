@@ -29,7 +29,7 @@ function App() {
           <TodoList todos={todos} updateTodos={updateTodoList} />
         </Route>
         <Route path="/add">
-          <AddTodo />
+          <AddTodo todos={todos} updateTodos={updateTodoList} />
         </Route>
         <Route
           path="/update/:id"

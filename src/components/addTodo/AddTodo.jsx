@@ -1,9 +1,15 @@
 import React from "react";
+import PropTypes from "prop-types";
 import axios from "axios";
 import "./AddTodo.scss";
 import TodoForm from "../todoForm/TodoForm";
 
-const AddTodo = () => {
+const propTypes = {
+  todos: PropTypes.array,
+  updateTodos: PropTypes.func
+};
+
+const AddTodo = ({ todos, updateTodos }) => {
   const handleSubmit = (title, description, datetime) => {
     if (title === "") {
       return;
@@ -16,14 +22,14 @@ const AddTodo = () => {
       todo_completed: false
     };
 
-    console.log("todoDetails", todoDetails);
-
-    axios
-      .post("http://localhost:3001/api/todos/add", todoDetails)
-      .then(res => console.log(res.data));
+    axios.post("http://localhost:3001/api/todos/add", todoDetails).then(res => {
+      updateTodos([...todos, res.data]);
+    });
   };
 
   return <TodoForm onHandleSubmit={handleSubmit} />;
 };
+
+AddTodo.propTypes = propTypes;
 
 export default AddTodo;
