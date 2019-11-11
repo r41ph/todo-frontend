@@ -23,7 +23,7 @@ const TodoForm = props => {
       setDescription(todo.todo_description);
       setDatetime(moment(todo.todo_duedate).format("D/M/Y h:mm A"));
     }
-  }, [todoId, todos]);
+  }, [todoId, todos, props.match]);
 
   const handleChange = event => {
     const target = event.target;
