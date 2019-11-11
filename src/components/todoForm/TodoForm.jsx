@@ -50,29 +50,30 @@ const TodoForm = props => {
   };
 
   return (
-    <form>
-      <div className="">
-        <label>Title: </label>
+    <form className="todo-form">
+      <h2>Add new TODO</h2>
+      <div className="todo-form__field">
+        <label className="todo-form__label">Title: </label>
         <input type="text" className="" value={title} onChange={handleChange} />
       </div>
-      <div className="">
-        <label>Description: </label>
+      <div className="todo-form__field">
+        <label className="todo-form__label">Description: </label>
         <textarea
           className=""
           value={description}
           onChange={handleChange}
         ></textarea>
       </div>
-      <div className="">
-        <label>Due date: </label>
+      <div className="todo-form__field">
+        <label className="todo-form__label">Due date: </label>
         <Datetime
           onChange={handleDatetime}
           isValidDate={validDate}
           value={datetime === "Invalid date" ? "Set due date" : datetime}
         />
       </div>
-      <div className="">
-        <Button handleClick={handleSubmit}>
+      <div className="todo-form__field">
+        <Button handleClick={handleSubmit} className="todo-button__form">
           {todoId ? "Update Todo" : "Add Todo"}
         </Button>
       </div>
