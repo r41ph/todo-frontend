@@ -11,6 +11,9 @@ const Nav = () => {
       <NavLink exact className="todo-nav__item" to="/add">
         Add Todo
       </NavLink>
+      <NavLink exact className="todo-nav__item" to="/completed">
+        Show Completed
+      </NavLink>
     </nav>
   );
 };

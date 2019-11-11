@@ -1,9 +1,9 @@
 import React from "react";
-import "./TodoList.scss";
+import "./TodoListCompleted.scss";
 import moment from "moment";
 import Todo from "../todo/Todo";
 
-const TodoList = ({ todos = [], updateTodos }) => {
+const TodoListCompleted = ({ todos = [], updateTodos }) => {
   const onDeleteTodo = id => {
     const updatedTodos = todos.filter(todo => todo._id !== id);
     updateTodos(updatedTodos);
@@ -19,7 +19,7 @@ const TodoList = ({ todos = [], updateTodos }) => {
     <div className="todo-container">
       {todos.length > 0
         ? todos.map(todo =>
-            todo.todo_completed !== true ? (
+            todo.todo_completed === true ? (
               <Todo
                 key={todo._id}
                 id={todo._id}
@@ -43,4 +43,4 @@ const TodoList = ({ todos = [], updateTodos }) => {
   );
 };
 
-export default TodoList;
+export default TodoListCompleted;

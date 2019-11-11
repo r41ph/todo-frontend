@@ -6,6 +6,7 @@ import TodoList from "./components/todoList/TodoList";
 import AddTodo from "./components/addTodo/AddTodo";
 import UpdateTodo from "./components/updateTodo/UpdateTodo";
 import Header from "./components/header/Header";
+import TodoListCompleted from "./components/todoListCompleted/TodoListCompleted";
 
 function App() {
   const [todos, setTodos] = React.useState([]);
@@ -37,6 +38,9 @@ function App() {
             <UpdateTodo {...props} todos={todos} updateTodos={updateTodoList} />
           )}
         ></Route>
+        <Route path="/completed">
+          <TodoListCompleted todos={todos} updateTodos={updateTodoList} />
+        </Route>
       </Switch>
     </div>
   );

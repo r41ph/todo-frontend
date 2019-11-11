@@ -11,6 +11,7 @@ const propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   duedate: PropTypes.string,
+  completed: PropTypes.bool.isRequired,
   deleteTodo: PropTypes.func.isRequired,
   updateStatus: PropTypes.func.isRequired
 };
@@ -21,6 +22,7 @@ const Todo = ({
   description,
   duedate,
   deleteTodo,
+  completed,
   updateStatus
 }) => {
   const onDelete = () => {
@@ -33,14 +35,11 @@ const Todo = ({
   };
 
   const onCompleted = () => {
-    console.log("moment(duedate)", moment(duedate));
-    console.log("duedate", typeof duedate);
-    const date = moment(duedate).format("M/D/Y h:mm A");
     const todoCompleted = {
       todo_title: title,
       todo_description: description,
-      todo_duedate: date,
-      todo_completed: true
+      todo_duedate: moment(duedate).format("M/D/Y h:mm A"),
+      todo_completed: !completed
     };
 
     axios
@@ -55,11 +54,17 @@ const Todo = ({
       <div className="todo-toggle">
         <div className="todo-title">{title}</div>
         <div className="todo-options">
-          <Button>
-            <Link to={`/update/${id}`}>Edit</Link>
-          </Button>
+          {!completed ? (
+            <Button>
+              <Link to={`/update/${id}`}>Edit</Link>
+            </Button>
+          ) : (
+            ""
+          )}
           <Button handleClick={onDelete}>Delete</Button>
-          <Button handleClick={onCompleted}>Complete</Button>
+          <Button handleClick={onCompleted}>
+            {!completed ? "Complete" : "Open"}
+          </Button>
         </div>
         <div className="todo-duedate">
           {duedate ? `Due Date: ${duedate}` : ""}
