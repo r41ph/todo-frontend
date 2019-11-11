@@ -1,12 +1,29 @@
 import React from "react";
-import axios from "axios";
 import Datetime from "react-datetime";
+import moment from "moment";
 import "./TodoForm.scss";
 
-const TodoForm = () => {
+const TodoForm = props => {
+  const { todos } = props;
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
   const [datetime, setDatetime] = React.useState("");
+  const [todoId, setTodoId] = React.useState();
+
+  // If the request comes from /update/:id
+  // fill out the form fields.
+  React.useEffect(() => {
+    if (props.match) {
+      const { id } = props.match.params;
+      setTodoId(id);
+    }
+    if (todoId && todos.length > 0) {
+      const todo = todos.find(todo => todo._id === todoId);
+      setTitle(todo.todo_title);
+      setDescription(todo.todo_description);
+      setDatetime(moment(todo.todo_duedate).format("D/M/Y h:mm A"));
+    }
+  }, [todoId, todos]);
 
   const handleChange = event => {
     const target = event.target;
@@ -17,23 +34,8 @@ const TodoForm = () => {
     }
   };
 
-  const handleSubmit = event => {
-    event.preventDefault();
-
-    if (title === "") {
-      return;
-    }
-
-    const newTodo = {
-      todo_title: title,
-      todo_description: description,
-      todo_duedate: datetime,
-      todo_completed: false
-    };
-
-    axios
-      .post("http://localhost:3001/api/todos/add", newTodo)
-      .then(res => console.log(res.data));
+  const handleSubmit = () => {
+    props.onHandleSubmit(title, description, datetime, todoId);
   };
 
   const handleDatetime = time => {
@@ -62,11 +64,15 @@ const TodoForm = () => {
       </div>
       <div className="">
         <label>Due date: </label>
-        <Datetime onChange={handleDatetime} isValidDate={validDate} />
+        <Datetime
+          onChange={handleDatetime}
+          isValidDate={validDate}
+          value={datetime === "Invalid date" ? "Set due date" : datetime}
+        />
       </div>
       <div className="">
-        <button onClick={handleSubmit} className="">
-          Add Todo
+        <button type="button" onClick={handleSubmit} className="">
+          {todoId ? "Update Todo" : "Add Todo"}
         </button>
       </div>
     </form>
