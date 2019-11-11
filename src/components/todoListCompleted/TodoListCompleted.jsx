@@ -42,7 +42,7 @@ const TodoListCompleted = ({ todos = [], updateTodos }) => {
   };
 
   return (
-    <div className="todos-container">
+    <div className="todos-container todos-container__completed">
       {todos.length > 0 ? renderCompleted() : "Loading"}
     </div>
   );

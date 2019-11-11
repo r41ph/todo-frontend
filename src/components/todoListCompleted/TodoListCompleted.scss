@@ -1,0 +1,11 @@
+.todos-container {
+  &.todos-container__completed {
+    .todo-container {
+      background-color: #999;
+
+      .todo-duedate {
+        color: #fff;
+      }
+    }
+  }
+}
