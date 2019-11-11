@@ -4,8 +4,14 @@ import moment from "moment";
 import Todo from "../todo/Todo";
 
 const TodoList = ({ todos = [], updateTodos }) => {
-  const onUpdateTodos = id => {
+  const onDeleteTodo = id => {
     const updatedTodos = todos.filter(todo => todo._id !== id);
+    updateTodos(updatedTodos);
+  };
+  const onUpdateTodoStatus = (id, updatedTodo) => {
+    const updatedTodos = todos.map(todo => {
+      return todo._id === id ? updatedTodo.data : todo;
+    });
     updateTodos(updatedTodos);
   };
 
@@ -20,12 +26,11 @@ const TodoList = ({ todos = [], updateTodos }) => {
               description={todo.todo_description}
               duedate={
                 todo.todo_duedate !== ""
-                  ? moment(todo.todo_duedate).format(
-                      "dddd, Do MMMM YYYY, h:mm a"
-                    )
+                  ? moment(todo.todo_duedate).format("M/D/Y h:mm A")
                   : ""
               }
-              updateTodos={onUpdateTodos}
+              deleteTodo={onDeleteTodo}
+              updateStatus={onUpdateTodoStatus}
             />
           ))
         : "Loading"}
