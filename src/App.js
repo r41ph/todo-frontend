@@ -23,7 +23,7 @@ function App() {
   };
 
   return (
-    <div className="todos-container">
+    <div className="todos">
       <Header heading="todo list app" />
       <Switch>
         <Route path="/" exact>

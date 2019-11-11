@@ -1,6 +1,14 @@
-.todos-container {
+.todos {
   width: 1240px;
-  max-width: 100%;
-  margin: 0 auto;
-  background-color: rgb(216, 207, 207);
+  min-height: 100vh;
+  max-width: calc(100% - 40px);
+  margin: 0 20px;
+  background-color: #f0f4f7;
+
+  @media (min-width: 1240px) {
+    margin: 0 auto;
+  }
+}
+.todos-container {
+  padding: 20px;
 }
