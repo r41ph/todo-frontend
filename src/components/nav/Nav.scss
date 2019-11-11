@@ -1,0 +1,12 @@
+.todo-nav__item {
+  display: inline-block;
+  text-decoration: none;
+  color: #000;
+  &:not(:last-of-type) {
+    margin-right: 10px;
+  }
+
+  &.active {
+    border-bottom: 1px solid #000;
+  }
+}
