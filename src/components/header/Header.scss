@@ -3,7 +3,7 @@
   flex-direction: column;
   padding: 20px;
 
-  @media (min-width: 576px) {
+  @media (min-width: 768px) {
     flex-direction: initial;
     justify-content: space-between;
   }
@@ -13,7 +13,7 @@
     font-size: 24px;
     margin-bottom: 20px;
     color: #2398ff;
-    @media (min-width: 576px) {
+    @media (min-width: 768px) {
       margin-bottom: 0;
       font-size: 32px;
     }
