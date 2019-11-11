@@ -51,7 +51,7 @@ const TodoForm = props => {
 
   return (
     <form className="todo-form">
-      <h2>Add new TODO</h2>
+      <h2>{todoId ? "Update Todo" : "Add new TODO"}</h2>
       <div className="todo-form__field">
         <label className="todo-form__label">Title: </label>
         <input type="text" className="" value={title} onChange={handleChange} />
