@@ -16,7 +16,7 @@ const TodoListCompleted = ({ todos = [], updateTodos }) => {
   };
 
   return (
-    <div className="todo-container">
+    <div className="todos-container">
       {todos.length > 0
         ? todos.map(todo =>
             todo.todo_completed === true ? (
