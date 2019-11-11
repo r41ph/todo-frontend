@@ -2,6 +2,7 @@ import React from "react";
 import Datetime from "react-datetime";
 import moment from "moment";
 import "./TodoForm.scss";
+import Button from "../button/Button";
 
 const TodoForm = props => {
   const { todos } = props;
@@ -71,9 +72,9 @@ const TodoForm = props => {
         />
       </div>
       <div className="">
-        <button type="button" onClick={handleSubmit} className="">
+        <Button handleClick={handleSubmit}>
           {todoId ? "Update Todo" : "Add Todo"}
-        </button>
+        </Button>
       </div>
     </form>
   );
