@@ -8,7 +8,7 @@ const propTypes = {
   handleClick: PropTypes.func
 };
 
-const Button = ({ className, children, handleClick }) => {
+const Button = ({ className, children, handleClick = () => {} }) => {
   const onHandleClick = () => {
     handleClick();
   };
