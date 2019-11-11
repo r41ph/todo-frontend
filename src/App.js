@@ -5,6 +5,7 @@ import { Switch, Route } from "react-router-dom";
 import TodoList from "./components/todoList/TodoList";
 import AddTodo from "./components/addTodo/AddTodo";
 import UpdateTodo from "./components/updateTodo/UpdateTodo";
+import Header from "./components/header/Header";
 
 function App() {
   const [todos, setTodos] = React.useState([]);
@@ -18,6 +19,7 @@ function App() {
 
   return (
     <div className="todos-container">
+      <Header heading="todo list app" />
       <Switch>
         <Route path="/" exact>
           <TodoList todos={todos} />
