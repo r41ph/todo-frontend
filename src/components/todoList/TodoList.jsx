@@ -10,6 +10,7 @@ const TodoList = ({ todos = [] }) => (
       ? todos.map(todo => (
           <Todo
             key={todo._id}
+            id={todo._id}
             title={todo.todo_title}
             description={todo.todo_description}
             duedate={
