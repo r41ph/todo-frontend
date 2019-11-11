@@ -50,13 +50,16 @@ const Todo = ({
       });
   };
 
-  const onToggleDescription = () => {
+  const onToggleDescription = event => {
+    if (event.target.className !== "todo-options") {
+      return;
+    }
     setIsDescVisible(!isDescVisible);
   };
 
   return (
     <div className="todo-container">
-      <div className="todo-toggle" onClick={onToggleDescription}>
+      <div className="todo-toggle" onClick={e => onToggleDescription(e)}>
         <div className="todo-title">{title}</div>
         <div className="todo-options">
           {!completed ? (

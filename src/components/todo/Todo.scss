@@ -5,3 +5,9 @@
     display: block;
   }
 }
+
+.todo-toggle {
+  &:hover {
+    cursor: pointer;
+  }
+}
