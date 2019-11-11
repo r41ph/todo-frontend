@@ -29,7 +29,9 @@ function App() {
         </Route>
         <Route
           path="/update/:id"
-          render={props => <UpdateTodo {...props} todos={todos} />}
+          render={props => (
+            <UpdateTodo {...props} todos={todos} updateTodos={setTodos} />
+          )}
         ></Route>
       </Switch>
     </div>
