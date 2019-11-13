@@ -7,7 +7,7 @@ import AddTodo from "./components/addTodo/AddTodo";
 import UpdateTodo from "./components/updateTodo/UpdateTodo";
 import Header from "./components/header/Header";
 import TodoListCompleted from "./components/todoListCompleted/TodoListCompleted";
-import { fetchTodos } from "./actions/todoListAction";
+import { fetchTodos } from "./actions/fetchTodoListAction";
 import Loading from "./components/loading/Loading";
 
 function App({ fetchTodos, todos, loading, error }) {
