@@ -6,21 +6,21 @@ const initialState = {
 
 export default function todoListReducer(state = initialState, action) {
   switch (action.type) {
-    case "FETCH_TODO_LIST_BEGINS":
+    case "FETCH_TODOS_BEGINS":
       return {
         ...state,
         loading: true,
         error: null
       };
 
-    case "FETCH_TODO_LIST_SUCCESS":
+    case "FETCH_TODOS_SUCCESS":
       return {
         ...state,
         loading: false,
         todoList: action.todoList
       };
 
-    case "FETCH_TODO_LIST_ERROR":
+    case "FETCH_TODOS_ERROR":
       return {
         ...state,
         loading: false,
