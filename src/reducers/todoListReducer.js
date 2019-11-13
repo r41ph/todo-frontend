@@ -4,7 +4,7 @@ const initialState = {
   error: null
 };
 
-export default function todoListReducer(state = initialState, action) {
+export default function fetchTodosReducer(state = initialState, action) {
   switch (action.type) {
     case "FETCH_TODOS_BEGINS":
       return {
@@ -26,6 +26,19 @@ export default function todoListReducer(state = initialState, action) {
         loading: false,
         error: action.error,
         todoList: []
+      };
+
+    case "DELETE_TODO":
+      const todos = state.todoList.filter(todo => todo._id !== action.id);
+      return {
+        ...state,
+        todoList: todos
+      };
+
+    case "ADD_TODO":
+      return {
+        ...state,
+        todoList: [...state.todos, todo]
       };
 
     default:
