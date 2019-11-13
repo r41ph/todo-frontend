@@ -1,6 +1,8 @@
+@import "../../assets/styles/colors";
+
 .message {
   margin: 10px 20px;
   padding: 20px;
-  background-color: #666;
-  color: #fff;
+  background-color: $dark-grey;
+  color: $white;
 }

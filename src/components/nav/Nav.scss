@@ -1,12 +1,14 @@
+@import "../../assets/styles/colors";
+
 .todo-nav__item {
   display: inline-block;
   text-decoration: none;
-  color: #000;
+  color: $black;
   &:not(:last-of-type) {
     margin-right: 30px;
   }
 
   &.active {
-    border-bottom: 2px solid #2398ff;
+    border-bottom: 2px solid $primary-color;
   }
 }

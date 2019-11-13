@@ -1,10 +1,12 @@
+@import "../../assets/styles/colors";
+
 .todos-container {
   &.todos-container__completed {
     .todo-container {
-      background-color: #999;
+      background-color: $dark-grey;
 
       .todo-duedate {
-        color: #fff;
+        color: $white;
       }
     }
   }

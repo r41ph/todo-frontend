@@ -1,7 +1,9 @@
+@import "../../assets/styles/colors";
+
 .todo-button {
   border: none;
   background-color: transparent;
-  color: #000;
+  color: $black;
 
   &:hover {
     cursor: pointer;
@@ -10,6 +12,6 @@
 
   > a {
     text-decoration: none;
-    color: #000;
+    color: $black;
   }
 }

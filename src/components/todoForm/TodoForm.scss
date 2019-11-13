@@ -1,6 +1,8 @@
+@import "../../assets/styles/colors";
+
 .todo-form {
   margin: 0 20px;
-  background-color: #2398ff;
+  background-color: $primary-color;
   padding: 40px;
 
   .todo-form__field {
@@ -39,7 +41,7 @@
   padding: 4px;
   margin-top: 1px;
   z-index: 99999 !important;
-  background: #fff;
+  background: $white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   border: 1px solid #f9f9f9;
 }
@@ -105,11 +107,11 @@
 .rdtPicker td.rdtActive,
 .rdtPicker td.rdtActive:hover {
   background-color: #428bca;
-  color: #fff;
+  color: $white;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 .rdtPicker td.rdtActive.rdtToday:before {
-  border-bottom-color: #fff;
+  border-bottom-color: $white;
 }
 .rdtPicker td.rdtDisabled,
 .rdtPicker td.rdtDisabled:hover {

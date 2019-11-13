@@ -1,9 +1,11 @@
+@import "./assets/styles/colors";
+
 .todos {
   width: 920px;
   min-height: 100vh;
   max-width: calc(100% - 40px);
   margin: 0 20px;
-  background-color: #fff;
+  background-color: $white;
 
   @media (min-width: 1240px) {
     margin: 0 auto;

@@ -1,5 +1,7 @@
+@import "../../assets/styles/colors";
+
 .todo-container {
-  background-color: #2398ff;
+  background-color: $primary-color;
   border-radius: 5px;
   border-top-right-radius: 25px;
   margin-bottom: 25px;
@@ -7,7 +9,7 @@
   position: relative;
 
   .todo-title {
-    color: #fff;
+    color: $white;
   }
   .todo-description {
     display: none;
@@ -25,7 +27,7 @@
     font-size: 12px;
     margin-right: 6px;
     &.overdue {
-      color: #ff6347;
+      color: $secondary-color;
       font-weight: bold;
     }
   }
@@ -40,9 +42,9 @@
   }
 
   &.overdue {
-    background-color: lighten(#ff6347, 15%);
+    background-color: lighten($secondary-color, 15%);
     .todo-duedate {
-      color: #fff;
+      color: $white;
     }
   }
 }
