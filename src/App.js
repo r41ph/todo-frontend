@@ -2,13 +2,14 @@ import React from "react";
 import { connect } from "react-redux";
 import "./App.scss";
 import { Switch, Route } from "react-router-dom";
-import TodoList from "./components/todoList/TodoList";
+// import TodoList from "./components/todoList/TodoList";
 import AddTodo from "./components/addTodo/AddTodo";
 import UpdateTodo from "./components/updateTodo/UpdateTodo";
 import Header from "./components/header/Header";
 import TodoListCompleted from "./components/todoListCompleted/TodoListCompleted";
-import { fetchTodos } from "./actions/fetchTodoListAction";
 import Loading from "./components/loading/Loading";
+import ContainerTodoList from "./containers/ContainerTodoList";
+import fetchTodos from "./actions/fetchTodosAction";
 
 function App({ fetchTodos, todos, loading, error }) {
   React.useEffect(() => {
@@ -27,7 +28,8 @@ function App({ fetchTodos, todos, loading, error }) {
       <Header heading="todo list app" />
       <Switch>
         <Route path="/" exact>
-          <TodoList todos={todos} updateTodos={updateTodoList} />
+          {/* <TodoList todos={todos} updateTodos={updateTodoList} /> */}
+          <ContainerTodoList />
         </Route>
         <Route path="/add">
           <AddTodo todos={todos} updateTodos={updateTodoList} />
