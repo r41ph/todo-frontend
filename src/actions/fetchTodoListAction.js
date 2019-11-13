@@ -25,13 +25,13 @@ export const fetchTodoListBegins = () => {
 export const fetchTodoListSuccess = todoList => {
   return {
     type: "FETCH_TODO_LIST_SUCCESS",
-    payload: todoList
+    todoList
   };
 };
 
 export const fetchTodoListError = error => {
   return {
     type: "FETCH_TODO_LIST_ERROR",
-    payload: error
+    error
   };
 };

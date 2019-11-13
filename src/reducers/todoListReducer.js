@@ -17,14 +17,14 @@ export default function todoListReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        todoList: action.payload
+        todoList: action.todoList
       };
 
     case "FETCH_TODO_LIST_ERROR":
       return {
         ...state,
         loading: false,
-        error: action.payload.error,
+        error: action.error,
         todoList: []
       };
 
