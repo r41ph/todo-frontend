@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import { connect } from "react-redux";
 import "./App.scss";
 import { Switch, Route } from "react-router-dom";
 import TodoList from "./components/todoList/TodoList";
@@ -7,19 +7,15 @@ import AddTodo from "./components/addTodo/AddTodo";
 import UpdateTodo from "./components/updateTodo/UpdateTodo";
 import Header from "./components/header/Header";
 import TodoListCompleted from "./components/todoListCompleted/TodoListCompleted";
+import { fetchTodos } from "./actions/todoListAction";
 
-function App() {
-  const [todos, setTodos] = React.useState([]);
-
+function App({ fetchTodos, todos, loading, error }) {
   React.useEffect(() => {
-    axios
-      .get("http://localhost:3001/api/todos")
-      .then(res => setTodos(res.data))
-      .catch(err => console.log("err", err));
-  }, []);
+    fetchTodos();
+  }, [fetchTodos]);
 
   const updateTodoList = updatedList => {
-    setTodos(updatedList);
+    // setTodos(updatedList);
   };
 
   return (
@@ -46,4 +42,16 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = state => ({
+  todos: state.todos.todoList,
+  loading: state.todos.loading,
+  error: state.todos.error
+});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchTodos: () => dispatch(fetchTodos())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
