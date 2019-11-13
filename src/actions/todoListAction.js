@@ -17,7 +17,6 @@ export const fetchTodos = () => {
 };
 
 export const fetchTodoListBegins = () => {
-  console.log("begins");
   return {
     type: "FETCH_TODO_LIST_BEGINS"
   };
