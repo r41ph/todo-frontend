@@ -8,6 +8,7 @@ import UpdateTodo from "./components/updateTodo/UpdateTodo";
 import Header from "./components/header/Header";
 import TodoListCompleted from "./components/todoListCompleted/TodoListCompleted";
 import { fetchTodos } from "./actions/todoListAction";
+import Loading from "./components/loading/Loading";
 
 function App({ fetchTodos, todos, loading, error }) {
   React.useEffect(() => {
@@ -17,6 +18,9 @@ function App({ fetchTodos, todos, loading, error }) {
   const updateTodoList = updatedList => {
     // setTodos(updatedList);
   };
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="todos">
