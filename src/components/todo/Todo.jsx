@@ -46,7 +46,7 @@ const Todo = ({
     axios
       .post(`http://localhost:3001/api/todos/update/${id}`, todoCompleted)
       .then(res => {
-        updateStatus(id, res);
+        updateStatus(res.data);
       });
   };
 

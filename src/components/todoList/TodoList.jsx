@@ -4,16 +4,13 @@ import moment from "moment";
 import Todo from "../todo/Todo";
 import Message from "../message/Message";
 
-const TodoList = ({ todos = [], updateTodos, deleteTodo }) => {
+const TodoList = ({ todos = [], updateTodo, deleteTodo }) => {
   const onDeleteTodo = id => {
     deleteTodo(id);
   };
 
-  const onUpdateTodoStatus = (id, updatedTodo) => {
-    const updatedTodos = todos.map(todo => {
-      return todo._id === id ? updatedTodo.data : todo;
-    });
-    updateTodos(updatedTodos);
+  const onUpdateTodoStatus = updatedTodo => {
+    updateTodo(updatedTodo);
   };
 
   const renderTodos = () => {

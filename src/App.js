@@ -3,12 +3,13 @@ import { connect } from "react-redux";
 import "./App.scss";
 import { Switch, Route } from "react-router-dom";
 import fetchTodos from "./actions/fetchTodosAction";
-import UpdateTodo from "./components/updateTodo/UpdateTodo";
+// import UpdateTodo from "./components/updateTodo/UpdateTodo";
 import Header from "./components/header/Header";
 import TodoListCompleted from "./components/todoListCompleted/TodoListCompleted";
 import Loading from "./components/loading/Loading";
-import ContainerTodoList from "./containers/ContainerTodoList";
-import ContainerAddTodo from "./containers/ContainerAddTodo";
+import TodoListContainer from "./containers/TodoListContainer";
+import AddTodoContainer from "./containers/AddTodoContainer";
+import UpdateTodoContainer from "./containers/UpdateTodoContainer";
 
 function App({ fetchTodos, todos, loading, error }) {
   React.useEffect(() => {
@@ -27,16 +28,14 @@ function App({ fetchTodos, todos, loading, error }) {
       <Header heading="todo list app" />
       <Switch>
         <Route path="/" exact>
-          <ContainerTodoList />
+          <TodoListContainer />
         </Route>
         <Route path="/add">
-          <ContainerAddTodo />
+          <AddTodoContainer />
         </Route>
         <Route
           path="/update/:id"
-          render={props => (
-            <UpdateTodo {...props} todos={todos} updateTodos={updateTodoList} />
-          )}
+          render={props => <UpdateTodoContainer {...props} />}
         ></Route>
         <Route path="/completed">
           <TodoListCompleted todos={todos} updateTodos={updateTodoList} />

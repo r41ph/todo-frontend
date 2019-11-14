@@ -29,16 +29,28 @@ export default function fetchTodosReducer(state = initialState, action) {
       };
 
     case "DELETE_TODO":
-      const todos = state.todoList.filter(todo => todo._id !== action.id);
+      const todosAfterDelete = state.todoList.filter(
+        todo => todo._id !== action.id
+      );
       return {
         ...state,
-        todoList: todos
+        todoList: todosAfterDelete
       };
 
     case "ADD_TODO":
       return {
         ...state,
         todoList: [...state.todoList, action.todo]
+      };
+
+    case "UPDATE_TODO":
+      const todosAfterUpdate = state.todoList.map(todo =>
+        todo._id === action.todo._id ? action.todo : todo
+      );
+
+      return {
+        ...state,
+        todoList: todosAfterUpdate
       };
 
     default:
