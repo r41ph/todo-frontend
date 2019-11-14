@@ -10,8 +10,9 @@ const propTypes = {
   updateTodos: PropTypes.func
 };
 
-const AddTodo = ({ todos, updateTodos }) => {
+const AddTodo = ({ todos, addTodo }) => {
   const [message, setMessage] = React.useState("");
+
   const handleSubmit = (title, description, datetime) => {
     if (title === "") {
       setMessage("Title is mandatory");
@@ -31,7 +32,7 @@ const AddTodo = ({ todos, updateTodos }) => {
     axios
       .post("http://localhost:3001/api/todos/add", todoDetails)
       .then(res => {
-        updateTodos([...todos, res.data]);
+        addTodo(res.data);
         setMessage("Todo added");
         setTimeout(() => {
           setMessage("");

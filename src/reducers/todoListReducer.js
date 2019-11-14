@@ -38,7 +38,7 @@ export default function fetchTodosReducer(state = initialState, action) {
     case "ADD_TODO":
       return {
         ...state,
-        todoList: [...state.todos, todo]
+        todoList: [...state.todoList, action.todo]
       };
 
     default:
