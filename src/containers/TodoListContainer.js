@@ -5,7 +5,8 @@ import updateTodo from "../actions/updateTodoAction";
 
 const mapStateToProps = state => {
   return {
-    todos: state.todos.todoList
+    todos: state.todos.todoList,
+    filter: state.filterTodoList
   };
 };
 

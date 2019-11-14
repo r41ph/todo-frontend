@@ -4,7 +4,7 @@ import moment from "moment";
 import Todo from "../todo/Todo";
 import Message from "../message/Message";
 
-const TodoList = ({ todos = [], updateTodo, deleteTodo }) => {
+const TodoList = ({ todos = [], updateTodo, deleteTodo, filter }) => {
   const onDeleteTodo = id => {
     deleteTodo(id);
   };
@@ -13,9 +13,25 @@ const TodoList = ({ todos = [], updateTodo, deleteTodo }) => {
     updateTodo(updatedTodo);
   };
 
-  const renderTodos = () => {
+  const renderTodos = todoStatus => {
+    let selectedFilter;
+
     const todosList = todos.reduce((acc, todo) => {
-      if (todo.todo_completed === false) {
+      switch (todoStatus) {
+        case "all":
+          selectedFilter = true;
+          break;
+        case "completed":
+          selectedFilter = todo.todo_completed === true;
+          break;
+        case "uncompleted":
+          selectedFilter = todo.todo_completed === false;
+          break;
+        default:
+          selectedFilter = todo.todo_completed === false;
+      }
+
+      if (selectedFilter) {
         acc.push(
           <Todo
             key={todo._id}
@@ -45,7 +61,7 @@ const TodoList = ({ todos = [], updateTodo, deleteTodo }) => {
 
   return (
     <div className="todos-container">
-      {todos.length > 0 ? renderTodos() : "Loading"}
+      {todos.length > 0 ? renderTodos(filter) : "Loading"}
     </div>
   );
 };
