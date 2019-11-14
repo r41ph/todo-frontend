@@ -29,11 +29,7 @@ const UpdateTodo = props => {
       });
   };
 
-  return (
-    <>
-      <TodoForm onHandleSubmit={handleSubmit} {...props} />
-    </>
-  );
+  return <TodoForm onHandleSubmit={handleSubmit} {...props} />;
 };
 
 UpdateTodo.propTypes = propTypes;
