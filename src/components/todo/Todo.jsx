@@ -5,6 +5,7 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 import "./Todo.scss";
 import Button from "../button/Button";
+import Checkbox from "../shared/Checkbox/Checkbox";
 
 const propTypes = {
   id: PropTypes.string.isRequired,
@@ -26,6 +27,8 @@ const Todo = ({
   updateStatus
 }) => {
   const [isDescVisible, setIsDescVisible] = React.useState(false);
+  const [isSelected, setIsSelected] = React.useState(completed);
+
   const onDelete = () => {
     axios
       .post(`http://localhost:3001/api/todos/delete/${id}`)
@@ -46,7 +49,8 @@ const Todo = ({
     axios
       .post(`http://localhost:3001/api/todos/update/${id}`, todoCompleted)
       .then(res => {
-        updateStatus(res.data);
+        updateStatus(id, res);
+        setIsSelected(!isSelected);
       });
   };
 
@@ -63,7 +67,13 @@ const Todo = ({
   return (
     <div className={`todo-container ${overdue ? "overdue" : ""}`}>
       <div className="todo-toggle" onClick={e => onToggleDescription(e)}>
-        <div className="todo-title">{title}</div>
+        <div className="todo-title">
+          <Checkbox onCheckboxChange={onCompleted} isSelected={isSelected} />
+          {/* <Button handleClick={onCompleted}>
+            {!completed ? "Complete" : "Open"}
+          </Button> */}
+          {title}
+        </div>
         <div className="todo-options">
           {!completed ? (
             <Button>
@@ -73,9 +83,6 @@ const Todo = ({
             ""
           )}
           <Button handleClick={onDelete}>Delete</Button>
-          <Button handleClick={onCompleted}>
-            {!completed ? "Complete" : "Open"}
-          </Button>
           <div className={`todo-duedate ${closeToEndTime ? "overdue" : ""}`}>
             {duedate ? duedate : ""}
           </div>
