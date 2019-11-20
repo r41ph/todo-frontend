@@ -1,0 +1,39 @@
+@import "../../../assets/styles/colors";
+
+.todo-checkbox-label {
+  display: flex;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+
+  .todo-checkbox-checkmark {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    background-color: $light-grey;
+    display: inline-block;
+  }
+
+  .todo-checkbox-input:checked {
+    & ~ .todo-checkbox-checkmark::after {
+      content: "";
+      display: inline-block;
+      border-left: 3px solid $primary-color;
+      border-bottom: 3px solid $primary-color;
+      height: 5px;
+      width: 10px;
+      transform: rotate(-45deg);
+      margin-left: 4px;
+      margin-bottom: 3px;
+    }
+  }
+}
+
+.todo-checkbox-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
