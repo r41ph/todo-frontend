@@ -4,7 +4,6 @@ import "./Nav.scss";
 
 const Nav = ({ filterTodoList }) => {
   const handleChange = event => {
-    console.log("event.target.value", event.target.value);
     filterTodoList(event.target.value);
   };
 
@@ -16,9 +15,6 @@ const Nav = ({ filterTodoList }) => {
       <NavLink exact className="todo-nav__item" to="/add">
         Add Todo
       </NavLink>
-      {/* <NavLink exact className="todo-nav__item" to="/completed">
-        Show Completed
-      </NavLink> */}
       <select onChange={handleChange} name="todoStatus" id="todoStatus">
         <option value="uncompleted">Uncompleted</option>
         <option value="completed">Completed</option>
