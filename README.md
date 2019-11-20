@@ -18,11 +18,3 @@ Launches the test runner in the interactive watch mode.<br />
 ### `npm build`
 
 Builds the app for production to the `build` folder.<br />
-
-### `Note:`
-
-Please, note that for lack of time I haven't been able to implement:
-
-- An .env file with any sensitive data needed as well as variables like the server URL for easy access through the code and manteinance.
-- Better UI/UX with a error and updates messages management.
-- Unit test for the components and their functionality.
