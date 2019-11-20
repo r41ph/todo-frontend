@@ -49,7 +49,7 @@ const Todo = ({
     axios
       .post(`http://localhost:3001/api/todos/update/${id}`, todoCompleted)
       .then(res => {
-        updateStatus(id, res);
+        updateStatus(res.data);
         setIsSelected(!isSelected);
       });
   };
@@ -68,11 +68,12 @@ const Todo = ({
     <div className={`todo-container ${overdue ? "overdue" : ""}`}>
       <div className="todo-toggle" onClick={e => onToggleDescription(e)}>
         <div className="todo-title">
-          <Checkbox onCheckboxChange={onCompleted} isSelected={isSelected} />
-          {/* <Button handleClick={onCompleted}>
-            {!completed ? "Complete" : "Open"}
-          </Button> */}
-          {title}
+          <Checkbox
+            onCheckboxChange={onCompleted}
+            checked={isSelected}
+            name={id}
+            label={title}
+          />
         </div>
         <div className="todo-options">
           {!completed ? (
